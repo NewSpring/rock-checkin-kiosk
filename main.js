@@ -24,9 +24,10 @@ chrome.app.runtime.onRestarted.addListener(function() {
  */
 function runApp() {
   chrome.app.window.create("browser.html", {
-    bounds: {
-      width: 1366,
-      height: 768
-    }
+    outerBounds: {
+      minHeight: 768,
+      minWidth: 1366
+    },
+    state: "fullscreen"
   });
 }

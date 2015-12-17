@@ -1,6 +1,6 @@
 # Check-In Kiosk
 
-<img src="https://s3.amazonaws.com/ns.images/newspring/annualreport/iggy.png" />
+<img src="https://raw.githubusercontent.com/NewSpring/KidSpring-Kiosk/master/img/logo.png" />
 
 A Chrome Kiosk app for check-in.
 

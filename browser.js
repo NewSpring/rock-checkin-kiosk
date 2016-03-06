@@ -1,8 +1,8 @@
-var homeUrl = "https://checkin.newspring.cc/";
-
 onload = function() {
+  var homeUrl = "https://checkin.newspring.cc/";
+  var currentUrl = "";
   var webview = document.querySelector("webview");
-  webview.src = homeUrl;
+  var indicator = document.querySelector("#url-indicator");
 
   document.querySelector("#home").onclick = function() {
     webview.src = homeUrl;
@@ -12,5 +12,16 @@ onload = function() {
     webview.reload();
   };
 
-  document.querySelector("#url-indicator").innerHTML = homeUrl;
+  webview.addEventListener("loadstart", function (e) {
+    if(e.isTopLevel) {
+      currentUrl = e.url;
+      indicator.innerHTML = "Loading " + currentUrl;
+    }
+  });
+
+  webview.addEventListener("loadstop", function (e) {
+    indicator.innerHTML = currentUrl;
+  });
+
+  webview.src = homeUrl;
 };

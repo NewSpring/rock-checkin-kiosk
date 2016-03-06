@@ -1,4 +1,4 @@
-var homeUrl = "https://beta-rock.newspring.cc/attendedcheckin";
+var homeUrl = "https://checkin.newspring.cc/";
 
 onload = function() {
   var webview = document.querySelector("webview");

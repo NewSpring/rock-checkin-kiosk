@@ -11,4 +11,6 @@ onload = function() {
   document.querySelector("#reload").onclick = function() {
     webview.reload();
   };
+
+  document.querySelector("#url-indicator").innerHTML = homeUrl;
 };

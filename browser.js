@@ -1,5 +1,5 @@
 onload = function() {
-  var homeUrl = "https://checkin.newspring.cc/";
+  var homeUrl = "https://checkin.newspring.cc/attendedcheckin";
   var currentUrl = "";
   var webview = document.querySelector("webview");
   var indicator = document.querySelector("#url-indicator");

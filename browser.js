@@ -5,11 +5,33 @@ onload = function() {
   var indicator = document.querySelector("#url-indicator");
 
   document.querySelector("#home").onclick = function() {
-    webview.src = homeUrl;
+    webview.clearData( { since: 0 }, {
+      appcache: true,
+      cache: true,
+      cookies: true,
+      fileSystems: true,
+      indexedDB: true,
+      localStorage: true,
+      webSQL: true
+    }, function () {
+      webview.className += " loading"
+      webview.src = homeUrl;
+    } );
   };
 
   document.querySelector("#reload").onclick = function() {
-    webview.reload();
+    webview.clearData( { since: 0 }, {
+      appcache: false,
+      cache: true,
+      cookies: false,
+      fileSystems: false,
+      indexedDB: false,
+      localStorage: false,
+      webSQL: false
+    }, function () {
+      webview.className += " loading"
+      webview.reload();
+    } );
   };
 
   webview.addEventListener("loadstart", function (e) {
@@ -21,6 +43,7 @@ onload = function() {
 
   webview.addEventListener("loadstop", function (e) {
     indicator.innerHTML = currentUrl;
+    webview.className = webview.className.replace("loading", "");
   });
 
   webview.src = homeUrl;

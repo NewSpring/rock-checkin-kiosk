@@ -9,7 +9,7 @@
   "icons": {
     "128": "img/logo.png"
   },
-  "version":"1.0.6",
+  "version":"1.0.7",
   "manifest_version": 2,
   "minimum_chrome_version": "31.0.0.0",
   "name": "Rock Attended Check-in",

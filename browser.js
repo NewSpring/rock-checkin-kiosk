@@ -5,6 +5,7 @@ onload = function() {
   var indicator = document.querySelector("#url-indicator");
 
   document.querySelector("#home").onclick = function() {
+    webview.stop();    
     webview.clearData( { since: 0 }, {
       appcache: true,
       cache: true,
@@ -20,6 +21,7 @@ onload = function() {
   };
 
   document.querySelector("#reload").onclick = function() {
+    webview.stop();
     webview.clearData( { since: 0 }, {
       appcache: false,
       cache: true,

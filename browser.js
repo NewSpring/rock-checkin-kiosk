@@ -3,9 +3,10 @@ onload = function() {
   var currentUrl = "";
   var webview = document.querySelector("webview");
   var indicator = document.querySelector("#url-indicator");
+  var versionIndicator = document.querySelector("#version-indicator");
 
   document.querySelector("#home").onclick = function() {
-    webview.stop();    
+    webview.stop();
     webview.clearData( { since: 0 }, {
       appcache: true,
       cache: true,
@@ -49,4 +50,5 @@ onload = function() {
   });
 
   webview.src = homeUrl;
+  versionIndicator.innerHTML = "(" + chrome.runtime.getManifest().version + ")";
 };

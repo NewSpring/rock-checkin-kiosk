@@ -24,7 +24,7 @@ chrome.app.runtime.onRestarted.addListener(function() {
  */
 function runApp() {
   chrome.app.window.create("browser.html", {
-    outerBounds: {
+    innerBounds: {
       minHeight: 768,
       minWidth: 1366
     },

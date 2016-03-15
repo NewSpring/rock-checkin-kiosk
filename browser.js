@@ -1,4 +1,4 @@
-onload = function() {
+onload = function () {
   var homeUrl = "https://checkin.newspring.cc/attendedcheckin";
   var currentUrl = "";
   var webview = document.querySelector("webview");
@@ -7,7 +7,7 @@ onload = function() {
   var batteryLevel = document.querySelector("#battery-status");
   var chargeStatus = document.querySelector("#charge-status");
 
-  document.querySelector("#home").onclick = function() {
+  document.querySelector("#home").onclick = function () {
     webview.stop();
     webview.clearData( { since: 0 }, {
       appcache: true,
@@ -23,7 +23,7 @@ onload = function() {
     } );
   };
 
-  document.querySelector("#reload").onclick = function() {
+  document.querySelector("#reload").onclick = function () {
     webview.stop();
     webview.clearData( { since: 0 }, {
       appcache: false,
@@ -39,8 +39,7 @@ onload = function() {
     } );
   };
 
-  var updateClock = function ()
-  {
+  var updateClock = function () {
       var today = new Date();
       var h = today.getHours();
       var m = today.getMinutes();
@@ -70,52 +69,51 @@ onload = function() {
     webview.className = webview.className.replace("loading", "");
   });
 
-  webview.src = homeUrl;
-  versionIndicator.innerHTML = "v" + chrome.runtime.getManifest().version;
-  updateClock();
-
   navigator.getBattery().then(function(battery) {
-    // Update Battery Info on Initial Load
-    updateChargeInfo();
-    updateLevelInfo();
-
-    // Event Listeners for Charge & Level Changes
-    battery.addEventListener('chargingchange', function(){
-      updateChargeInfo();
-      updateLevelInfo(); // Remove This
-    });
-
-    battery.addEventListener('levelchange', function(){
-      updateLevelInfo();
-    });
-
     // Update Battery Charge Status
-    function updateChargeInfo(){
+    var updateChargeInfo = function () {
       if (battery.charging) {
-        chargeStatus.classList.add('fa');
-        chargeStatus.classList.add('fa-bolt');
+        chargeStatus.classList.add("fa");
+        chargeStatus.classList.add("fa-bolt");
       } else {
-        chargeStatus.classList.remove('fa');
-        chargeStatus.classList.remove('fa-bolt');
-      }
-    }
-
-    // Update Battery Level
-    function updateLevelInfo(){
-      batteryLevel.classList.remove('fa-battery-0','fa-battery-1','fa-battery-2','fa-battery-3');
-
-      if (battery.level < .20) {
-        batteryLevel.classList.add('fa-battery-0');
-      } else if (battery.level >= .20 && battery.level < .40) {
-        batteryLevel.classList.add('fa-battery-1');
-      } else if (battery.level >= .40 && battery.level < .60) {
-        batteryLevel.classList.add('fa-battery-2');
-      } else if (battery.level >= .60 && battery.level < .80) {
-        batteryLevel.classList.add('fa-battery-3');
-      } else if (battery.level >= .80) {
-        batteryLevel.classList.add('fa-battery-4');
+        chargeStatus.classList.remove("fa");
+        chargeStatus.classList.remove("fa-bolt");
       }
     };
 
+    // Update Battery Level
+    var updateLevelInfo = function () {
+      batteryLevel.classList.remove("fa-battery-0","fa-battery-1","fa-battery-2","fa-battery-3", "fa-battery-4");
+      batteryLevel.title = Math.floor(battery.level * 100) + "%";
+
+      if (battery.level < .20) {
+        batteryLevel.classList.add("fa-battery-0");
+      } else if (battery.level >= .20 && battery.level < .40) {
+        batteryLevel.classList.add("fa-battery-1");
+      } else if (battery.level >= .40 && battery.level < .60) {
+        batteryLevel.classList.add("fa-battery-2");
+      } else if (battery.level >= .60 && battery.level < .80) {
+        batteryLevel.classList.add("fa-battery-3");
+      } else if (battery.level >= .80) {
+        batteryLevel.classList.add("fa-battery-4");
+      }
+    };
+
+    // Event Listeners for Charge & Level Changes
+    battery.addEventListener("chargingchange", function(){
+      updateChargeInfo();
+    });
+
+    battery.addEventListener("levelchange", function(){
+      updateLevelInfo();
+    });
+
+    // Update Battery Info on Initial Load
+    updateChargeInfo();
+    updateLevelInfo();
   });
+
+  webview.src = homeUrl;
+  versionIndicator.innerHTML = "v" + chrome.runtime.getManifest().version;
+  updateClock();
 };

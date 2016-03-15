@@ -28,6 +28,6 @@ function runApp() {
       minHeight: 768,
       minWidth: 1366
     },
-    // state: "fullscreen"
+    state: "fullscreen"
   });
 }

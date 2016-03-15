@@ -36,7 +36,7 @@ html,body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #202020;
+  background-color: #111;
 }
 
 #controls {
@@ -53,8 +53,7 @@ html,body {
   font-size: 14px;
   background-color: #202020;
   transition-duration: .2s;
-  transition-delay: 1.5s;
-  margin-bottom: 0;
+  transition-delay: 1s;
 }
 
 #controls:hover {

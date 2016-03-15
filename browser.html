@@ -3,17 +3,21 @@
   <head>
     <link rel="stylesheet" href="browser.css">
     <script src="browser.js"></script>
+  </head>
   <body>
     <div id="backdrop">
       <div class="loader">Loading...</div>
     </div>
-    <webview></webview>
+    <webview class="loading"></webview>
     <div id="controls">
-      <button id="home" title="Go Home">&#8962;</button>
-      <button id="reload" title="Reload">&#10227;</button>
-      <div id="indicators">
-        <span id="url-indicator"></span>
-        <span id="version-indicator"></span>
+      <div class="grid">
+        <div class="grid__item one-half">
+          <button id="home" title="Go Home"><!-- &#8962; -->Home</button><button id="reload" title="Reload"><!-- &#10227; -->Reload</button>
+        </div><div class="grid__item one-half align--right">
+          <div id="url-indicator"></div> &bullet;
+          <div id="version-indicator"></div> &bullet;
+          <b><div id="clock"></div></b>
+        </div>
       </div>
     </div>
   </body>

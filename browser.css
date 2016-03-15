@@ -2,6 +2,30 @@ html,body {
   height: 100%;
   margin: 0px;
   padding: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.grid {
+  display: inline-block;
+  width: 100%;
+}
+
+.grid__item {
+
+}
+
+.grid__item.one-half {
+  width: 50%;
+}
+
+.align--right {
+  text-align: right;
 }
 
 #backdrop {
@@ -10,59 +34,55 @@ html,body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: black;
+  background-color: #202020;
 }
 
 #controls {
+  display: inline;
+  vertical-align: middle;
   position: fixed;
   left: 0;
   right: 0;
-  top: 0;
-  padding: 3px;
-  border-bottom: solid 1px #000;
-  height: 1px;
+  bottom: 0;
+  margin-bottom: -36px;
+  color: white;
   overflow: hidden;
+  padding: 7px 14px 7px 7px;
+  font-size: 14px;
+  background-color: #202020;
   transition-duration: .2s;
-  background-color: #222;
+  transition-delay: 1.5s;
 }
 
 #controls:hover {
-  height: 30px;
-  background-color: #555;
+  margin-bottom: 0;
+  transition-delay: 0s;
 }
 
 #controls button {
   font-size: 14px;
-  line-height: 24px;
-  border-radius: 2px;
-  padding: 0 6px;
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: -.5px;
+  background-color: #6bac43;
+  color: white;
+  border: 0px;
+  border-radius: 3px;
+  padding: 7px 10px;
+  outline: none;
 }
 
-#controls button:active {
-  background-color: red;
+#controls button:hover {
+  cursor: pointer;
+  background-color: #2a4930;
 }
 
-button {
-  border: solid 1px transparent;
-  background: transparent;
+#controls button + button {
+  margin-left: 7px;
 }
 
-button:hover {
-  border-color: #ccc;
-  background: -webkit-linear-gradient(top, #f2f2f2 0%, #cccccc 99%);
-}
-
-#controls #home {
-  font-size: 25px;
-}
-
-#controls #reload {
-  font-size: 21px;
-}
-
-#controls #indicators {
-  float: right;
-  margin: 5px;
+#controls div {
+  display: inline-block;
 }
 
 webview {
@@ -78,26 +98,29 @@ webview.loading {
 }
 
 .loader {
-  margin: 300px auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -40px;
+  margin-top: -60px;
   font-size: 10px;
-  position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-right: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
-  border-left: 1.1em solid #6bac43;
+  border-top: 1.1em solid #6bac43;
+  border-right: 1.1em solid #6bac43;
+  border-bottom: 1.1em solid #6bac43;
+  border-left: 1.1em solid transparent;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
-  -webkit-animation: load8 1.1s infinite linear;
-  animation: load8 1.1s infinite linear;
+  -webkit-animation: load8 .6s infinite linear;
+  animation: load8 .6s infinite linear;
 }
 
 .loader,
 .loader:after {
   border-radius: 50%;
-  width: 10em;
-  height: 10em;
+  width: 80px;
+  height: 80px;
 }
 
 @-webkit-keyframes load8 {

@@ -4,6 +4,7 @@ onload = function() {
   var webview = document.querySelector("webview");
   var indicator = document.querySelector("#url-indicator");
   var versionIndicator = document.querySelector("#version-indicator");
+  var batteryInfo = document.querySelector("#battery-info");
   var batteryLevel = document.querySelector("#battery-status");
   var chargeStatus = document.querySelector("#charge-status");
 
@@ -82,7 +83,6 @@ onload = function() {
     // Event Listeners for Charge & Level Changes
     battery.addEventListener('chargingchange', function(){
       updateChargeInfo();
-      updateLevelInfo(); // Remove This
     });
 
     battery.addEventListener('levelchange', function(){
@@ -102,8 +102,12 @@ onload = function() {
 
     // Update Battery Level
     function updateLevelInfo(){
-      batteryLevel.classList.remove('fa-battery-0','fa-battery-1','fa-battery-2','fa-battery-3');
-
+      var batteryPercentage = battery.level * 100 + "%";
+      
+      batteryLevel.classList.remove('fa-battery-0','fa-battery-1','fa-battery-2','fa-battery-3','fa-battery-4');
+      
+      batteryInfo.setAttribute('title', batteryPercentage);
+      
       if (battery.level < .20) {
         batteryLevel.classList.add('fa-battery-0');
       } else if (battery.level >= .20 && battery.level < .40) {

@@ -18,7 +18,7 @@ onload = function() {
       indexedDB: true,
       localStorage: true,
       webSQL: true
-    }, function () {
+    }, function() {
       webview.className += " loading"
       webview.src = homeUrl;
     } );
@@ -34,13 +34,13 @@ onload = function() {
       indexedDB: false,
       localStorage: false,
       webSQL: false
-    }, function () {
+    }, function() {
       webview.className += " loading"
       webview.reload();
     } );
   };
 
-  var updateClock = function ()
+  var updateClock = function()
   {
       var today = new Date();
       var h = today.getHours();
@@ -81,43 +81,46 @@ onload = function() {
     updateLevelInfo();
 
     // Event Listeners for Charge & Level Changes
-    battery.addEventListener('chargingchange', function(){
+    battery.addEventListener("chargingchange", function(){
       updateChargeInfo();
     });
 
-    battery.addEventListener('levelchange', function(){
+    battery.addEventListener("levelchange", function(){
       updateLevelInfo();
     });
 
     // Update Battery Charge Status
-    function updateChargeInfo(){
+    function updateChargeInfo() {
       if (battery.charging) {
-        chargeStatus.classList.add('fa');
-        chargeStatus.classList.add('fa-bolt');
+        chargeStatus.classList.add("fa");
+        chargeStatus.classList.add("fa-bolt");
       } else {
-        chargeStatus.classList.remove('fa');
-        chargeStatus.classList.remove('fa-bolt');
+        chargeStatus.classList.remove("fa");
+        chargeStatus.classList.remove("fa-bolt");
       }
     }
 
     // Update Battery Level
-    function updateLevelInfo(){
+    function updateLevelInfo() {
+
+      // Update Percentage and Send to #battery-info title attr
       var batteryPercentage = battery.level * 100 + "%";
+      batteryInfo.setAttribute("title", batteryPercentage);
+
+      // Remove class for font awesome battery icon
+      batteryLevel.classList.remove("fa-battery-0","fa-battery-1","fa-battery-2","fa-battery-3","fa-battery-4");
       
-      batteryLevel.classList.remove('fa-battery-0','fa-battery-1','fa-battery-2','fa-battery-3','fa-battery-4');
-      
-      batteryInfo.setAttribute('title', batteryPercentage);
-      
+      // Add back class appropriate for current battery level
       if (battery.level < .20) {
-        batteryLevel.classList.add('fa-battery-0');
+        batteryLevel.classList.add("fa-battery-0");
       } else if (battery.level >= .20 && battery.level < .40) {
-        batteryLevel.classList.add('fa-battery-1');
+        batteryLevel.classList.add("fa-battery-1");
       } else if (battery.level >= .40 && battery.level < .60) {
-        batteryLevel.classList.add('fa-battery-2');
+        batteryLevel.classList.add("fa-battery-2");
       } else if (battery.level >= .60 && battery.level < .80) {
-        batteryLevel.classList.add('fa-battery-3');
+        batteryLevel.classList.add("fa-battery-3");
       } else if (battery.level >= .80) {
-        batteryLevel.classList.add('fa-battery-4');
+        batteryLevel.classList.add("fa-battery-4");
       }
     };
 

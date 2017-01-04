@@ -7,11 +7,11 @@ A Chrome Kiosk app for check-in.
 ## Local Installation
 
 1. Clone the repo
-2. In Chrome, browse to chrome://extensions/
-3. Check developer mode
-4. Click load unpacked extension
-5. Select the repo directory
-6. Update browser.js to point to your check-in site
+2. Update browser.js to point to your check-in site
+3. In Chrome, browse to chrome://extensions/
+4. Check developer mode
+5. Click load unpacked extension
+6. Select the repo directory
 
 ## Public Deployment
 
@@ -20,3 +20,4 @@ A Chrome Kiosk app for check-in.
 3. Pack the app for submission to the Chrome store
 4. Upload to your [Chrome App Dashboard](https://chrome.google.com/webstore/developer/dashboard)
 5. Select the Public/Private visibility needed (Private recommended)
+6. Deploy the app to your managed ChromeOS devices

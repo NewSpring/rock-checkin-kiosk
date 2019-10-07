@@ -1,5 +1,6 @@
 onload = function() {
   var homeUrl = "https://checkin.newspring.cc/attendedcheckin";
+  var registrationUrl = "https://brian-new.newspring.cc/kidspring/register/kiosk";
   var currentUrl = "";
   var webview = document.querySelector("webview");
   var indicator = document.querySelector("#url-indicator");
@@ -24,6 +25,22 @@ onload = function() {
     } );
   };
 
+  document.querySelector("#registration").onclick = function() {
+    webview.stop();
+    webview.clearData( { since: 0 }, {
+      appcache: true,
+      cache: true,
+      cookies: true,
+      fileSystems: true,
+      indexedDB: true,
+      localStorage: true,
+      webSQL: true
+    }, function() {
+      webview.className += " loading"
+      webview.src = registrationUrl;
+    } );
+  };
+
   document.querySelector("#reload").onclick = function() {
     webview.stop();
     webview.clearData( { since: 0 }, {
@@ -39,6 +56,7 @@ onload = function() {
       webview.reload();
     } );
   };
+  
 
   var updateClock = function()
   {

@@ -1,6 +1,5 @@
 onload = function() {
   var homeUrl = "https://checkin.newspring.cc/attendedcheckin/admin?back=true";
-  var registrationUrl = "https://newspring.cc/kidspring/register/kiosk";
   var currentUrl = "";
   var webview = document.querySelector("webview");
   var indicator = document.querySelector("#url-indicator");
@@ -22,22 +21,6 @@ onload = function() {
     }, function() {
       webview.className += " loading"
       webview.src = homeUrl;
-    } );
-  };
-
-  document.querySelector("#registration").onclick = function() {
-    webview.stop();
-    webview.clearData( { since: 0 }, {
-      appcache: true,
-      cache: true,
-      cookies: true,
-      fileSystems: true,
-      indexedDB: true,
-      localStorage: true,
-      webSQL: true
-    }, function() {
-      webview.className += " loading"
-      webview.src = registrationUrl;
     } );
   };
 

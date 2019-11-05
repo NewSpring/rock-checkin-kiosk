@@ -1,5 +1,5 @@
 onload = function() {
-  var homeUrl = "https://checkin.newspring.cc/attendedcheckin";
+  var homeUrl = "https://checkin.newspring.cc/attendedcheckin/admin?back=true";
   var registrationUrl = "https://newspring.cc/kidspring/register/kiosk";
   var currentUrl = "";
   var webview = document.querySelector("webview");

@@ -4,8 +4,9 @@
  * @see http://developer.chrome.com/trunk/apps/app.runtime.html
  * @see http://developer.chrome.com/trunk/apps/app.window.html
  */
+
 chrome.app.runtime.onLaunched.addListener(function() {
-  runApp();
+    runApp();
 });
 
 /**
@@ -14,7 +15,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
  * @see http://developer.chrome.com/trunk/apps/app.runtime.html
  */
 chrome.app.runtime.onRestarted.addListener(function() {
-  runApp();
+    runApp();
 });
 
 /**
@@ -23,11 +24,12 @@ chrome.app.runtime.onRestarted.addListener(function() {
  * @see http://developer.chrome.com/trunk/apps/app.window.html
  */
 function runApp() {
-  chrome.app.window.create("browser.html", {
-    innerBounds: {
-      minHeight: 768,
-      minWidth: 1366
-    },
-    state: "fullscreen"
-  });
+    chrome.app.window.create("browser.html", {
+        id: 'main',
+        bounds: {
+            height: 768,
+            width: 1366
+        },
+        state: "fullscreen"
+    });
 }

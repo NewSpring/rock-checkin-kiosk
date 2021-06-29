@@ -9,11 +9,15 @@
   "icons": {
     "128": "img/logo.png"
   },
-  "version":"1.0.9",
+  "version":"1.0.10",
   "manifest_version": 2,
   "minimum_chrome_version": "31.0.0.0",
   "name": "Rock Attended Check-in",
+  "sandbox": {
+    "pages": ["browser.html","_generated_background_page.html"]
+  },
   "permissions": [
+    "background",
     "webview",
     "*://*.fontawesome.com/*"
   ],

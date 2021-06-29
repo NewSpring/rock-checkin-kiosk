@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="browser.css">
     <script src="browser.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="backdrop">
-      <div class="loader">Loading...</div>
+        <div class="loader">Loading...</div>
     </div>
     <webview class="loading"></webview>
     <div id="controls">
-      <div class="full-width">
-          <button id="home" title="Go Home">Home</button><button id="reload" title="Reload">Reload</button><button id="register" title="Register">Register</button>
-          <div class="float-right text-right" style="margin-top:5px;">
-            <div id="url-indicator"></div> &bullet;
-            <div id="version-indicator"></div> &bullet;
-            <span id="battery-info">
+        <div class="full-width">
+            <button id="home" title="Go Home">Home</button><button id="reload" title="Reload">Reload</button><button id="register" title="Register">Register</button>
+            <div class="float-right text-right" style="margin-top:5px;">
+                <div id="url-indicator"></div> &bullet;
+                <div id="version-indicator"></div> &bullet;
+                <span id="battery-info">
               <i id="battery-status" class="fa fa-battery-1"></i>
               <i id="charge-status" class=""></i>
             </span> &bullet;
-            <b><div id="clock"></div></b>
-          </div>
-      </div>
+                <b><div id="clock"></div></b>
+            </div>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>
